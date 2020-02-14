@@ -14,8 +14,11 @@
 <meta property="og:site_name" content="bin&#39;s world">
 <meta property="og:description" content="CocoaPods是开源的，我们下载好源代码后，如果能像xcode一样一步步调试是非常方便的。在对CocoaPods进行调试之前我们先详细了解一下CocoaPods具体是怎么来的，对我们深入理解它的实现机制大有裨益。 CocoaPods是用什么实现的CocoaPods本质上是一个个Gem包组合起来的工具。Gem就是Ruby模块的包管理器，其包含包信息以及用于安装的文件。如果你做过iOS开发的话，可">
 <meta property="og:image" content="https://ae01.alicdn.com/kf/Hd79058b290184f4b9512b9560cd6980ed.png">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/H5b7ddb8f0d064cc284a558fa9ca58529G.png">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/He907f2f14bf441169f55ad147708f0f0V.png">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/Hbdb480f93c7143168528b29693f96737t.png">
 <meta property="article:published_time" content="2020-02-13T13:55:53.000Z">
-<meta property="article:modified_time" content="2020-02-14T13:16:00.816Z">
+<meta property="article:modified_time" content="2020-02-14T13:40:37.462Z">
 <meta property="article:author" content="zhangjianbin">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://ae01.alicdn.com/kf/Hd79058b290184f4b9512b9560cd6980ed.png">
@@ -119,7 +122,22 @@
 <li>lib目录比较重要，一般用来放核心的代码。我们阅读源码的话把重点放在该目录即可。</li>
 <li>sepc目录一般是一些测试代码，可不用太关注。</li>
 </ul>
-<h2 id="怎么使用IDE进行调试"><a href="#怎么使用IDE进行调试" class="headerlink" title="怎么使用IDE进行调试"></a>怎么使用IDE进行调试</h2><p>Ruby本身可以使用任何文本编辑工具进行代码的编写以及通过log的方式进行调试，但是对于大型项目效率太低。Ruby并没有类似Xcode这样的官方提供的高度集成的IDE。但是基于现成的一些工具我们依旧可以做到像Xcode一样的打断点一行行调试的目的。以前由于对vscode比较熟悉，尝试在vscode上面进行了Gem项目的调试。经过探索在vscode上是完全可以实现断点调试的。但是多少还是有些麻烦，直到遇到RubyMine。RubyMine是<a href="https://twitter.com/rubymine" target="_blank" rel="noopener">JetBrains</a>家开发的一款专门针对Ruby的IDE。JB家的IDE从来不会让你失望，无论从功能还是使用上都值得你拥有。</p>
+<h2 id="怎么使用IDE进行调试"><a href="#怎么使用IDE进行调试" class="headerlink" title="怎么使用IDE进行调试"></a>怎么使用IDE进行调试</h2><p>Ruby本身可以使用任何文本编辑工具进行代码的编写以及通过log的方式进行调试，但是对于大型项目效率太低。Ruby并没有类似Xcode这样的官方提供的高度集成的IDE。但是基于现成的一些工具我们依旧可以做到像Xcode一样的打断点一行行调试的目的。以前由于对vscode比较熟悉，尝试在vscode上面进行了Gem项目的调试。经过探索在vscode上是完全可以实现断点调试的。但是多少还是有些麻烦，直到遇到RubyMine。RubyMine是<a href="https://twitter.com/rubymine" target="_blank" rel="noopener">JetBrains</a>家开发的一款专门针对Ruby的IDE。JB家的IDE从来不会让你失望，无论从功能还是使用上都值得你拥有。下面讲解如果使用RubyMine调试CocoaPods，同样的方式适用于所有的Gem项目</p>
+<p>1.简历debugPod目录</p>
+<p>2.debugRuby目录下，创建一个文件，文件命名为gemfile. 里面输入下面的内容</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">source <span class="string">'https://rubygems.org'</span></span><br><span class="line"></span><br><span class="line">gem <span class="string">'cocoapods'</span>, <span class="symbol">:path=&gt;</span> <span class="string">'/Users/liuyanchao/Desktop/debugPod/CocoaPods'</span></span><br></pre></td></tr></table></figure>
+
+<p>因为此处指定的CocoaPods的路径为debugPod目录下，所以我们在debugPod下放一份CocoaPods的源码，当然我们也可以放在其他目录，只要保证gemfile中的path能引用到即可。</p>
+<p>3.在debugPod目录下执行一下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bundle install</span><br></pre></td></tr></table></figure>
+
+<p>或者通过RubyMine打开debugPod，然后在菜单栏的Toos——Bundler——install进行安装。安装完以后就需要配置RubyMine的config，如图所示：</p>
+<p><img src="https://ae01.alicdn.com/kf/H5b7ddb8f0d064cc284a558fa9ca58529G.png" alt="editCon"></p>
+<p>点击RubyMine编辑器右上角箭头所指的地方，会出现Edit Configuration的选项，点击进入该选项会进入如下的设置页面：</p>
+<p><img src="https://ae01.alicdn.com/kf/He907f2f14bf441169f55ad147708f0f0V.png" alt="step"></p>
+<p>按照图上的标注对这三处进行配置，注意working directory这个选项一定要选一个带podfile的目录，最好是自己生成的带podfile的完整xcode项目目录。这会上面配置的命令<strong>pod install</strong>执行的时候才能找到podfile文件，这是调试CocoaPods的前提。接下来配置最后一处：</p>
+<p><img src="https://ae01.alicdn.com/kf/Hbdb480f93c7143168528b29693f96737t.png" alt="step4"></p>
+<p>勾选上即可。配置完这些你就可以点击IDE右上角的debug按钮愉快的进行断点调试了。</p>
 
       
     </div>
