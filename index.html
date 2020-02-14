@@ -144,14 +144,15 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\curl -sSL https://get.rvm.io | bash -s stable --ruby</span><br></pre></td></tr></table></figure>
 
 <h2 id="Gem工程目录结构"><a href="#Gem工程目录结构" class="headerlink" title="Gem工程目录结构"></a>Gem工程目录结构</h2><p>Gem工程一般有标准的文件组织格式，以CocoaPods为例：</p>
-<p><img src="../images/poddir.png" alt="poddir"></p>
+<p><img src="https://ae01.alicdn.com/kf/Hd79058b290184f4b9512b9560cd6980ed.png" alt="poddir"></p>
 <ul>
 <li>bin目录下一般放可执行文件，CocoaPods的bin目录下放的就是pod的可执行文件</li>
 <li>example目录并不是强制的，里面放一些demo之类的。</li>
 <li>Gemfile配置一些依赖</li>
-<li>lib目录比较重要，一般核心的代码。我们阅读源码的话把重点放在该目录即可。</li>
+<li>lib目录比较重要，一般用来放核心的代码。我们阅读源码的话把重点放在该目录即可。</li>
 <li>sepc目录一般是一些测试代码，可不用太关注。</li>
 </ul>
+<h2 id="怎么使用IDE进行调试"><a href="#怎么使用IDE进行调试" class="headerlink" title="怎么使用IDE进行调试"></a>怎么使用IDE进行调试</h2><p>Ruby本身可以使用任何文本编辑工具进行代码的编写以及通过log的方式进行调试，但是对于大型项目效率太低。Ruby并没有类似Xcode这样的官方提供的高度集成的IDE。但是基于现成的一些工具我们依旧可以做到像Xcode一样的打断点一行行调试的目的。以前由于对vscode比较熟悉，尝试在vscode上面进行了Gem项目的调试。经过探索在vscode上是完全可以实现断点调试的。但是多少还是有些麻烦，直到遇到RubyMine。RubyMine是<a href="https://twitter.com/rubymine" target="_blank" rel="noopener">JetBrains</a>家开发的一款专门针对Ruby的IDE。JB家的IDE从来不会让你失望，无论从功能还是使用上都值得你拥有。</p>
 
       
     </div>
