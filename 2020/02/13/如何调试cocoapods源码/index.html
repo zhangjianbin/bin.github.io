@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>如何调试cocoapods源码 | bin&#39;s world</title>
+  <title>如何调试CocoaPods源码 | bin&#39;s world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CocoaPods是开源的，我们下载好源代码后，如果能像xcode一样一步步调试是非常方便的。在对CocoaPods进行调试之前我们先详细了解一下CocoaPods具体是怎么来的，对我们深入理解它的实现机制大有裨益。">
+  <meta name="description" content="CocoaPods是开源的，我们下载好源代码后，如果能像Xcode一样一步步调试是非常方便的。在对CocoaPods进行调试之前我们先详细了解一下CocoaPods具体是怎么来的，对我们深入理解它的实现机制大有裨益。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何调试cocoapods源码">
+<meta property="og:title" content="如何调试CocoaPods源码">
 <meta property="og:url" content="http://yoursite.com/2020/02/13/%E5%A6%82%E4%BD%95%E8%B0%83%E8%AF%95cocoapods%E6%BA%90%E7%A0%81/index.html">
 <meta property="og:site_name" content="bin&#39;s world">
-<meta property="og:description" content="CocoaPods是开源的，我们下载好源代码后，如果能像xcode一样一步步调试是非常方便的。在对CocoaPods进行调试之前我们先详细了解一下CocoaPods具体是怎么来的，对我们深入理解它的实现机制大有裨益。">
+<meta property="og:description" content="CocoaPods是开源的，我们下载好源代码后，如果能像Xcode一样一步步调试是非常方便的。在对CocoaPods进行调试之前我们先详细了解一下CocoaPods具体是怎么来的，对我们深入理解它的实现机制大有裨益。">
 <meta property="og:image" content="https://ae01.alicdn.com/kf/Hd79058b290184f4b9512b9560cd6980ed.png">
 <meta property="og:image" content="https://ae01.alicdn.com/kf/H5b7ddb8f0d064cc284a558fa9ca58529G.png">
 <meta property="og:image" content="https://ae01.alicdn.com/kf/He907f2f14bf441169f55ad147708f0f0V.png">
 <meta property="og:image" content="https://ae01.alicdn.com/kf/Hbdb480f93c7143168528b29693f96737t.png">
 <meta property="article:published_time" content="2020-02-13T13:55:53.000Z">
-<meta property="article:modified_time" content="2020-02-14T14:19:06.265Z">
+<meta property="article:modified_time" content="2020-02-14T14:21:29.050Z">
 <meta property="article:author" content="zhangjianbin">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://ae01.alicdn.com/kf/Hd79058b290184f4b9512b9560cd6980ed.png">
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      如何调试cocoapods源码
+      如何调试CocoaPods源码
     </h1>
   
 
@@ -178,7 +178,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>CocoaPods是开源的，我们下载好源代码后，如果能像xcode一样一步步调试是非常方便的。在对CocoaPods进行调试之前我们先详细了解一下CocoaPods具体是怎么来的，对我们深入理解它的实现机制大有裨益。</p>
+        <p>CocoaPods是开源的，我们下载好源代码后，如果能像Xcode一样一步步调试是非常方便的。在对CocoaPods进行调试之前我们先详细了解一下CocoaPods具体是怎么来的，对我们深入理解它的实现机制大有裨益。</p>
 <a id="more"></a>
 
 <h2 id="CocoaPods是用什么实现的"><a href="#CocoaPods是用什么实现的" class="headerlink" title="CocoaPods是用什么实现的"></a>CocoaPods是用什么实现的</h2><p>CocoaPods本质上是一个个Gem包组合起来的工具。Gem就是Ruby模块的包管理器，其包含包信息以及用于安装的文件。如果你做过iOS开发的话，可以把Gem和pod对比。我一直感觉pod就是仿造Gem实现的。经过多年的发展，RubyGem已经成为Ruby程序和库的标准格式，随着各个Ruby版本一起发行，一般不需要单独去安装。</p>
