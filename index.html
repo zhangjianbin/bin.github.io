@@ -126,7 +126,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>cocoapods是开源的，我们下载好源代码后，如果能像xcode一样一步步调试是非常方便的。</p>
+        <p>cocoapods是开源的，我们下载好源代码后，如果能像xcode一样一步步调试是非常方便的。在对cocoapod进行调试之前我们先详细了解一下cocoapods具体是怎么来的，对我们深入理解它的实现机制大有裨益。</p>
+<h2 id="cocoapods是用什么实现的"><a href="#cocoapods是用什么实现的" class="headerlink" title="cocoapods是用什么实现的"></a>cocoapods是用什么实现的</h2><p>cocoapods本质上是一个个Gem包组合起来的工具。Gem就是Ruby模块的包管理器，其包含包信息以及用于安装的文件。如果你做过iOS开发的话，可以把Gem和pod对比。我一直感觉pod就是仿造Gem实现的。经过多年的发展，RubyGem已经成为Ruby程序和库的标准格式，随着各个Ruby版本一起发行，一般不需要单独去安装。</p>
+<h2 id="阅读cocoapods的源码我们需要哪些知识"><a href="#阅读cocoapods的源码我们需要哪些知识" class="headerlink" title="阅读cocoapods的源码我们需要哪些知识"></a>阅读cocoapods的源码我们需要哪些知识</h2><p>由于cocoapods使用Ruby语言实现的，所以Ruby语法我们还是需要了解的。学习Ruby推荐下面的几本书:</p>
+<p>1.<a href="https://book.douban.com/subject/2032343/" target="_blank" rel="noopener">《Programming Ruby》</a>,本书内容生动，覆盖面广，适合初学者入门。</p>
+<p>2.<a href="https://book.douban.com/subject/3329887/" target="_blank" rel="noopener">《Ruby编程语言》</a>,本书的作者之一是松本行弘，Ruby 的缔造者。本书内容比较权威，也很有深度。但是翻译的略显晦涩，推荐有一定基础的阅读。</p>
+<p>3.<a href="https://book.douban.com/subject/7056800/" target="_blank" rel="noopener">《Ruby元编程》</a>,如果你深入学习Ruby，推荐这本书，里面很多Ruby原理和高级应用技巧，堪称动态语言的设计模式。书中讲述的各种Ruby编程模式，完全可以应用于其他动态语言（甚至静态语言）。本书不仅适合Ruby程序员阅读，也适合对动态编程 语言和面向对象编程感兴趣的读者阅读。所有对程序设计理论感兴趣的人都能从中获益。Ruby之父松本行弘作序推荐。</p>
 
       
     </div>
